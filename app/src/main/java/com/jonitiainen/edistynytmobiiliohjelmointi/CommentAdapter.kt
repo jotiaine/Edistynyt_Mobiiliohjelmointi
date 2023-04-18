@@ -4,10 +4,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation.findNavController
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.RecyclerViewItemBinding
+import com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.comment.Comment
 
 // aloitetaan luomalla uusi luokka CommentHolder
 class CommentAdapter(private val comments: List<Comment>) : RecyclerView.Adapter<CommentAdapter.CommentHolder>() {

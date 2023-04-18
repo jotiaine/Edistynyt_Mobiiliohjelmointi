@@ -22,5 +22,8 @@
         <item
             android:id="@+id/commentDataFragment"
             android:title="Comment API" />
+        <item
+            android:id="@+id/mapsFragment"
+            android:title="Google Maps test" />
     </group>
 </menu>

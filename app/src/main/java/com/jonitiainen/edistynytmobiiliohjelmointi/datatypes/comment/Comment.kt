@@ -1,4 +1,4 @@
-package com.jonitiainen.edistynytmobiiliohjelmointi
+package com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.comment
 
 import com.google.gson.annotations.SerializedName
 

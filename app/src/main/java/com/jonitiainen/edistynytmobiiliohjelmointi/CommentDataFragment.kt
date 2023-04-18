@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
@@ -15,7 +14,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentCommentDataBinding
-import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentDataBinding
+import com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.comment.Comment
 
 class CommentDataFragment : Fragment() {
     private var _binding: FragmentCommentDataBinding? = null
