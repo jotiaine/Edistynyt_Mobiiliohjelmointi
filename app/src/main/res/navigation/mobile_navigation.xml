@@ -41,4 +41,23 @@
             app:argType="integer"
             android:defaultValue="0" />
     </fragment>
+    <fragment
+        android:id="@+id/commentDataFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.CommentDataFragment"
+        android:label="fragment_comment_data"
+        tools:layout="@layout/fragment_comment_data" >
+        <action
+            android:id="@+id/action_commentDataFragment_to_commentDetailFragment"
+            app:destination="@id/commentDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentDetailFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.CommentDetailFragment"
+        android:label="fragment_comment_detail"
+        tools:layout="@layout/fragment_comment_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
 </navigation>

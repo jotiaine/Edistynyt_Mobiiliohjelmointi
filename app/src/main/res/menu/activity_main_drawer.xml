@@ -19,5 +19,8 @@
         <item
             android:id="@+id/dataFragment"
             android:title="Data fragment" />
+        <item
+            android:id="@+id/commentDataFragment"
+            android:title="Comment API" />
     </group>
 </menu>
