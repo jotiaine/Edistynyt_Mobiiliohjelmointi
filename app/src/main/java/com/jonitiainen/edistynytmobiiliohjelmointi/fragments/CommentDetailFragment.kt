@@ -1,4 +1,4 @@
-package com.jonitiainen.edistynytmobiiliohjelmointi
+package com.jonitiainen.edistynytmobiiliohjelmointi.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -7,8 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
+import com.jonitiainen.edistynytmobiiliohjelmointi.fragments.CommentDetailFragmentArgs
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentCommentDetailBinding
-import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentDetailBinding
 
 class CommentDetailFragment : Fragment() {
     private var _binding: FragmentCommentDetailBinding? = null

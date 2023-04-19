@@ -1,4 +1,4 @@
-package com.jonitiainen.edistynytmobiiliohjelmointi
+package com.jonitiainen.edistynytmobiiliohjelmointi.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -13,6 +13,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
+import com.jonitiainen.edistynytmobiiliohjelmointi.CommentAdapter
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentCommentDataBinding
 import com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.comment.Comment
 

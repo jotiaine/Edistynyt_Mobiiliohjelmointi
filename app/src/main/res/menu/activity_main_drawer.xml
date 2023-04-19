@@ -25,5 +25,8 @@
         <item
             android:id="@+id/mapsFragment"
             android:title="Google Maps test" />
+        <item
+            android:id="@+id/openStreetMapFragment"
+            android:title="OSM test" />
     </group>
 </menu>

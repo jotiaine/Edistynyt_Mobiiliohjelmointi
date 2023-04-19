@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsFragment">
+    tools:context=".fragments.MapsFragment">
 
     <!-- asetetaan fragment ConstraintLayoutin sisälle, jotta
     voimme asettaa siihen lisää Viewejä, esim. Checkboxit ja Radiobuttoni jne.

@@ -1,5 +1,7 @@
 package com.jonitiainen.edistynytmobiiliohjelmointi
 
+import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
@@ -11,6 +13,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -38,11 +41,31 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.dataFragment,
-                R.id.commentDataFragment, R.id.mapsFragment
+                R.id.commentDataFragment, R.id.mapsFragment, R.id.openStreetMapFragment
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Lista permissioineista, joita ohjelma käyttää
+        // TÄMÄN PITÄÄ TÄSMÄTÄ ANDROIDMANIFESTIN KANSSA
+        // jos käyttäjä kieltäytyy tarvitsee funktio lisätoimintaa
+        val PERMISSION_ALL = 123
+        val PERMISSIONS = arrayOf(
+            android.Manifest.permission.INTERNET,
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION,
+            android.Manifest.permission.ACCESS_NETWORK_STATE
+        )
+
+        // apufunktio, tarkistetaan oikeudet
+        if (!hasPermissions(this, *PERMISSIONS)) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL)
+        }
+    }
+
+    fun hasPermissions(context: Context, vararg permissions: String): Boolean = permissions.all {
+        ActivityCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
