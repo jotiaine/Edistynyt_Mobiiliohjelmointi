@@ -86,4 +86,14 @@
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.OpenStreetMapFragment"
         android:label="fragment_open_street_map"
         tools:layout="@layout/fragment_open_street_map" />
+    <fragment
+        android:id="@+id/feedbackReadFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.FeedbackReadFragment"
+        android:label="fragment_feedback_read"
+        tools:layout="@layout/fragment_feedback_read" />
+    <fragment
+        android:id="@+id/feedbackSendFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.FeedbackSendFragment"
+        android:label="fragment_feedback_send"
+        tools:layout="@layout/fragment_feedback_send" />
 </navigation>
