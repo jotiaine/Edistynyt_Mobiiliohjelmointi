@@ -102,12 +102,12 @@
     </fragment>
     <fragment
         android:id="@+id/basicAuthFragment"
-        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.BasicAuthFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.BasicAuthFragment"
         android:label="fragment_basic_auth"
         tools:layout="@layout/fragment_basic_auth" />
     <fragment
         android:id="@+id/tempAccessFragment"
-        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.TempAccessFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.TempAccessFragment"
         android:label="fragment_temp_access"
         tools:layout="@layout/fragment_temp_access" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.jonitiainen.edistynytmobiiliohjelmointi
+package com.jonitiainen.edistynytmobiiliohjelmointi.fragments
 
 import android.os.Bundle
 import android.util.Base64
@@ -7,15 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.jonitiainen.edistynytmobiiliohjelmointi.BuildConfig
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentBasicAuthBinding
-import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentDataBinding
-import com.jonitiainen.edistynytmobiiliohjelmointi.fragments.DataFragmentDirections
 
 class BasicAuthFragment : Fragment() {
     private var _binding: FragmentBasicAuthBinding? = null
