@@ -11,3 +11,12 @@ data class Feedback (
   @SerializedName("value"    ) var value    : String? = null
 
 )
+{
+  // yliajetaan luokan toString-metodi
+  // jotta listView käyttää tätä Feedbackin tulostamiseen
+  // muutoin ListView tulostaa kaikki sisällöt, mikä näyttää huonolta
+  // ja saattaa muutenkin näyttää liikaa tietoa käyttöliittymässä
+  override fun toString(): String {
+    return "${name}: ${location}"
+  }
+}

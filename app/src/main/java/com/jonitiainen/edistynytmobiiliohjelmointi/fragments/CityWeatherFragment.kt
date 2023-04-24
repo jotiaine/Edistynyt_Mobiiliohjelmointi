@@ -14,7 +14,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.GsonBuilder
 import com.jonitiainen.edistynytmobiiliohjelmointi.BuildConfig
-import com.jonitiainen.edistynytmobiiliohjelmointi.fragments.CityWeatherFragmentArgs
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentCityWeatherBinding
 import com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.cityweather.CityWeather
 

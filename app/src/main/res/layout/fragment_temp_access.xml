@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TempAccessFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/textView_temp_feedback_raw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:height="200dp"
+        android:text="Waiting..." />
+
+    <Button
+        android:id="@+id/button_get_raw_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET DATA"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

@@ -95,5 +95,19 @@
         android:id="@+id/feedbackSendFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.FeedbackSendFragment"
         android:label="fragment_feedback_send"
-        tools:layout="@layout/fragment_feedback_send" />
+        tools:layout="@layout/fragment_feedback_send" >
+        <action
+            android:id="@+id/action_feedbackSendFragment_to_feedbackReadFragment"
+            app:destination="@id/feedbackReadFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/basicAuthFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.BasicAuthFragment"
+        android:label="fragment_basic_auth"
+        tools:layout="@layout/fragment_basic_auth" />
+    <fragment
+        android:id="@+id/tempAccessFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.TempAccessFragment"
+        android:label="fragment_temp_access"
+        tools:layout="@layout/fragment_temp_access" />
 </navigation>

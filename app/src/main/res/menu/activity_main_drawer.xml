@@ -34,5 +34,11 @@
         <item
             android:id="@+id/feedbackSendFragment"
             android:title="Feedback Send" />
+        <item
+            android:id="@+id/basicAuthFragment"
+            android:title="Basic Auth" />
+        <item
+            android:id="@+id/tempAccessFragment"
+            android:title="Temp Access Directus" />
     </group>
 </menu>
