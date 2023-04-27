@@ -40,5 +40,8 @@
         <item
             android:id="@+id/tempAccessFragment"
             android:title="Temp Access Directus" />
+        <item
+            android:id="@+id/weatherStationFragment"
+            android:title="Weather MQTT" />
     </group>
 </menu>
