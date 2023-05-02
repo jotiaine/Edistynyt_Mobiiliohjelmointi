@@ -10,13 +10,13 @@ public class _8 {
 
     @SerializedName("v")
     @Expose
-    private int v;
+    private double v;
 
-    public int getV() {
+    public double getV() {
         return v;
     }
 
-    public void setV(int v) {
+    public void setV(double v) {
         this.v = v;
     }
 

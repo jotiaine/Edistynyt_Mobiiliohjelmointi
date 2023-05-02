@@ -62,7 +62,7 @@ class FeedbackSendFragment : Fragment() {
         // Request a string response from the provided URL.
         val stringRequest: StringRequest = object : StringRequest(
             Request.Method.POST, JSON_URL,
-            Response.Listener { response ->
+            Response.Listener { _ ->
                 Toast.makeText(context, "Thank you for your feedback!", Toast.LENGTH_SHORT).show()
                 clearText()
 

@@ -52,7 +52,7 @@ class OpenStreetMapFragment : Fragment() {
         binding.map.invalidate()
 
         // kun markkeria klikataan:
-        firstMarker.setOnMarkerClickListener { marker, mapView ->
+        firstMarker.setOnMarkerClickListener { _, _ ->
             // sijainti: esim: marker.position.latitude
             Log.d("TESTI", "Marker click!")
 

@@ -201,10 +201,9 @@ class TempAccessFragment : Fragment() {
             var body = ByteArray(0)
             try {
                 // on how to create this newData -variable
-                var newData = ""
 
                 // a very quick 'n dirty approach to creating the needed JSON body for login
-                newData = "{\"email\":\"${username}\", \"password\": \"${password}\"}"
+                var newData = "{\"email\":\"${username}\", \"password\": \"${password}\"}"
 
                 // JSON to bytes
                 body = newData.toByteArray(Charsets.UTF_8)

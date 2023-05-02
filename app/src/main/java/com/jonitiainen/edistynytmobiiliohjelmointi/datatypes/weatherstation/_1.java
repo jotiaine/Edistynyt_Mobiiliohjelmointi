@@ -1,3 +1,4 @@
+
 package com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.weatherstation;
 
 import javax.annotation.Generated;

@@ -115,4 +115,9 @@
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.WeatherStationFragment"
         android:label="fragment_weather_station"
         tools:layout="@layout/fragment_weather_station" />
+    <fragment
+        android:id="@+id/remoteMessageFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.RemoteMessageFragment"
+        android:label="fragment_remote_message"
+        tools:layout="@layout/fragment_remote_message" />
 </navigation>

@@ -43,5 +43,8 @@
         <item
             android:id="@+id/weatherStationFragment"
             android:title="Weather MQTT" />
+        <item
+            android:id="@+id/remoteMessageFragment"
+            android:title="Remote HiveMQ" />
     </group>
 </menu>

@@ -52,7 +52,7 @@ class WeatherStationFragment : Fragment() {
             .password(BuildConfig.MQTT_PASSWORD.toByteArray())
             .applySimpleAuth()
             .send()
-            .whenComplete { connAck: Mqtt3ConnAck?, throwable: Throwable? ->
+            .whenComplete { _: Mqtt3ConnAck?, throwable: Throwable? ->
                 if (throwable != null) {
                     Log.d("ADVTECH", "Connection failure.")
                 } else {
@@ -66,8 +66,7 @@ class WeatherStationFragment : Fragment() {
 
     // apufunktio/metodi jolla yhdistetään sääaseman topiciin
     // JOS yhteys onnistui aiemmin
-    fun subscribeToTopic()
-    {
+    fun subscribeToTopic() {
         // alustetaan GSON
         val gson = GsonBuilder().setPrettyPrinting().create()
 
@@ -88,6 +87,21 @@ class WeatherStationFragment : Fragment() {
                     // muutetaan vastaanotettu data JSONista -> WeatherStation -luokan olioksi
                     var item : WeatherStation = gson.fromJson(result, WeatherStation::class.java)
                     Log.d("ADVTECH", item.d.get1().v.toString() + "C")
+
+                    // asetetaan teksimuuttuja käyttöliittymään, jossa on säätietoja
+                    val temperature = item.d.get1().v
+                    var humidity = item.d.get3().v
+                    var text = "Temperature: ${temperature}\u2103"
+                    text += "\n"
+                    text += "Humidity: ${humidity}%"
+
+                    // koska MQTT-plugin ajaa koodia ja käsittelee dataa
+                    // tausta-ajalla omassa säikeessään eli threadissa
+                    // joudumme laittamaan ulkoasuun liittyvän koodin runOnUiThread-blokin-
+                    // sisälle. Muutoin tulee virhe että koodit toimivat eri säikeissä
+                    activity?.runOnUiThread {
+                        binding.textViewWeatherTest.text = text
+                    }
                 }
                 catch(e : Exception) {
                     Log.d("ADVTECH", e.message.toString())
@@ -96,7 +110,7 @@ class WeatherStationFragment : Fragment() {
 
             }
             .send()
-            .whenComplete { subAck, throwable ->
+            .whenComplete { _, throwable ->
                 if (throwable != null) {
                     // Handle failure to subscribe
                     Log.d("ADVTECH", "Subscribe failed.")
@@ -110,6 +124,7 @@ class WeatherStationFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+
         client.disconnect()
     }
 }
