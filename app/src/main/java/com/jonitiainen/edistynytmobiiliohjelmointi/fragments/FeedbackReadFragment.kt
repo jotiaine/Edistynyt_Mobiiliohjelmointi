@@ -43,7 +43,7 @@ class FeedbackReadFragment : Fragment() {
     private fun getFeedback(){
 
         // alustava lista feedback datalle + GSONin alustus
-        var feedbacks : List<Feedback> = emptyList()
+        var feedbacks : List<Feedback>
         val gson = GsonBuilder().setPrettyPrinting().create()
 
         // this is the url where we want to get our data

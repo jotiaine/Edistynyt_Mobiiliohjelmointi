@@ -64,13 +64,13 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
 
         // käytetään binding layeria myös karttafragmentissä
         // asetetaan zoom-kontrollit joko päälle tai pois CheckBoxin arvon perusteella
-        binding.checkBoxZoomControls.setOnCheckedChangeListener{compoundButton, b ->
+        binding.checkBoxZoomControls.setOnCheckedChangeListener{_, b ->
             Log.d("TESTI", "CHECKED! " + b.toString())
             gMap.uiSettings.isZoomControlsEnabled = b
         }
 
         // kun valitaan radiobuttonilla normaali-kartta
-        binding.radioButtonMapNormal.setOnCheckedChangeListener { compoundButton, b ->
+        binding.radioButtonMapNormal.setOnCheckedChangeListener { compoundButton, _ ->
             // onchecked käynnistyy molempiin suuntiin, eli jos radioButton valitaan
             // TAI valinta poistuu => tulee paljone bugeja
             // keskenään kumpaa koodia pitäisi totella
@@ -80,7 +80,7 @@ class MapsFragment : Fragment(), GoogleMap.OnMarkerClickListener {
         }
 
         // kun valitaan radiobuttonilla hybrid-kartta
-        binding.radioButtonMapHybrid.setOnCheckedChangeListener { compoundButton, b ->
+        binding.radioButtonMapHybrid.setOnCheckedChangeListener { compoundButton, _ ->
             // onchecked käynnistyy molempiin suuntiin, eli jos radioButton valitaan
             // TAI valinta poistuu => tulee paljone bugeja
             // keskenään kumpaa koodia pitäisi totella
