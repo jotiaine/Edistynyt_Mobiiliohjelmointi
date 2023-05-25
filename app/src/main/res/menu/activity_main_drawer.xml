@@ -46,5 +46,11 @@
         <item
             android:id="@+id/remoteMessageFragment"
             android:title="Remote HiveMQ" />
+        <item
+            android:id="@+id/customViewTesterFragment"
+            android:title="Custom View Test"/>
+        <item
+            android:id="@+id/calendarFragment"
+            android:title="Calendar Test"/>
     </group>
 </menu>

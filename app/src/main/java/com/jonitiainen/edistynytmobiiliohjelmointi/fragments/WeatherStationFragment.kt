@@ -100,6 +100,7 @@ class WeatherStationFragment : Fragment() {
                     // sisälle. Muutoin tulee virhe että koodit toimivat eri säikeissä
                     activity?.runOnUiThread {
                         binding.textViewWeatherTest.text = text
+                        binding.speedViewTemperature.speedTo(temperature.toFloat())
                     }
                 }
                 catch(e : Exception) {
