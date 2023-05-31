@@ -11,7 +11,7 @@
 
     <com.github.anastr.speedviewlib.SpeedView
         android:id="@+id/speedView_temperature"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
@@ -26,6 +26,19 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Waiting..."
-        android:textSize="26sp" />
+        android:textSize="22sp" />
+
+    <com.jonitiainen.edistynytmobiiliohjelmointi.CustomTemperatureView
+        android:id="@+id/customTemperatureView_weather"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10dp" />
+
+    <com.jonitiainen.edistynytmobiiliohjelmointi.LatestDataView
+        android:id="@+id/latest_data_view_temperature"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_border" />
 
 </LinearLayout>

@@ -4,26 +4,53 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
 
 class CustomTemperatureView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
-    ) : View(context, attrs, defStyleAttr) {
+) : View(context, attrs, defStyleAttr) {
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val textPaint = Paint(Paint.ANTI_ALIAS_FLAG)
 
-        // your helper variables etc. can be here
-        init
-        {
-            // this is constructor of your component, all initializations go here
-            // define the colors!
+    //  muuttuja, joka pitää kirjaa aktiivisesta lämpötilasta
+    private var temperature: Int = 0
+
+    // funktio, jolla lämpötila voidaan asettaa esim. fragmentista käsin
+    fun changeTemperature(temp: Int) {
+        temperature = temp
+
+        if (temperature > 0) {
+            paint.color = Color.RED
+        } else if (temperature < 0) {
             paint.color = Color.BLUE
-            textPaint.color = Color.WHITE
-            textPaint.textSize = 70f
-            textPaint.textAlign = Paint.Align.CENTER
+        } else {
+            paint.color = Color.GREEN
         }
+
+        // Android ei oletuksena piirrä CustomViewiä uusiksi
+        // siltä varalta jos data taustalla muuttuu.
+        // tämän takia meidän pitää itse ilmoittaa Androidille
+        // että CustomView pitää piirtää uusiksi.
+        invalidate()
+        requestLayout()
+    }
+
+    // your helper variables etc. can be here
+    init {
+        // this is constructor of your component, all initializations go here
+        // define the colors!
+        paint.color = Color.BLUE
+        textPaint.color = Color.WHITE
+        textPaint.textSize = 100f
+        textPaint.textAlign = Paint.Align.CENTER
+
+        // lihavointi
+        textPaint.typeface = Typeface.create(Typeface.DEFAULT, Typeface.BOLD)
+    }
+
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -34,7 +61,9 @@ class CustomTemperatureView @JvmOverloads constructor(
 
         // parameters: content, x, y, color
         // pieni 30px offset lisätty y-akseliin, jotta teksti on keskempänä näyttöä
-        canvas.drawText("Test!", width.toFloat() / 2, width.toFloat() / 2 + 30, textPaint);
+        canvas.drawText(
+            "${temperature}℃", width.toFloat() / 2, width.toFloat() / 2 + 30, textPaint
+        );
     }
 
     // CustomViewin oletuskoko
@@ -47,8 +76,7 @@ class CustomTemperatureView @JvmOverloads constructor(
 
         // if no exact size given (either dp or match_parent)
         // use this one instead as default (wrap_content)
-        if (w == 0)
-        {
+        if (w == 0) {
             w = size * 2
         }
 
@@ -57,9 +85,7 @@ class CustomTemperatureView @JvmOverloads constructor(
         // val minh: Int = View.MeasureSpec.getSize(w) + paddingBottom + paddingTop
         // in this case, we use the height the same as our width, since it's a circle
         val h: Int = View.resolveSizeAndState(
-            View.MeasureSpec.getSize(w),
-            heightMeasureSpec,
-            0
+            View.MeasureSpec.getSize(w), heightMeasureSpec, 0
         )
 
         setMeasuredDimension(w, h)

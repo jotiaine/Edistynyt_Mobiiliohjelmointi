@@ -13,6 +13,8 @@ import com.hivemq.client.mqtt.mqtt3.message.connect.connack.Mqtt3ConnAck
 import com.jonitiainen.edistynytmobiiliohjelmointi.BuildConfig
 import com.jonitiainen.edistynytmobiiliohjelmointi.databinding.FragmentWeatherStationBinding
 import com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.weatherstation.WeatherStation
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.UUID
 
 class WeatherStationFragment : Fragment() {
@@ -21,9 +23,24 @@ class WeatherStationFragment : Fragment() {
     // onDestroyView.
 
     // client-olio, jolla voidaan yhdistää MQTT-brokeriin koodin avulla
-    private lateinit var client: Mqtt3AsyncClient
+    private var client: Mqtt3AsyncClient? = null
+        get() {
+            if (field == null) {
+                field = MqttClient.builder()
+                    .useMqttVersion3()
+                    .sslWithDefaultConfig()
+                    .identifier(BuildConfig.MQTT_CLIENT_ID + UUID.randomUUID().toString())
+                    .serverHost(BuildConfig.MQTT_BROKER)
+                    .serverPort(8883)
+                    .buildAsync()
+            }
+            return field
+        }
+
 
     private val binding get() = _binding!!
+
+    private var dataText: String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -45,7 +62,7 @@ class WeatherStationFragment : Fragment() {
             .buildAsync()
 
         // yhdistetään käyttäjätiedoilla (username/password)
-        client.connectWith()
+        client!!.connectWith()
             .simpleAuth()
             .username(BuildConfig.MQTT_USERNAME)
             .password(BuildConfig.MQTT_PASSWORD.toByteArray())
@@ -69,7 +86,8 @@ class WeatherStationFragment : Fragment() {
         // alustetaan GSON
         val gson = GsonBuilder().setPrettyPrinting().create()
 
-        client.subscribeWith()
+
+        client!!.subscribeWith()
             .topicFilter(BuildConfig.MQTT_TOPIC)
             .callback { publish ->
 
@@ -84,7 +102,7 @@ class WeatherStationFragment : Fragment() {
                 // try/catch estää ohjelman tilttaamisen
                 try {
                     // muutetaan vastaanotettu data JSONista -> WeatherStation -luokan olioksi
-                    var item : WeatherStation = gson.fromJson(result, WeatherStation::class.java)
+                    var item: WeatherStation = gson.fromJson(result, WeatherStation::class.java)
                     Log.d("ADVTECH", item.d.get1().v.toString() + "C")
 
                     // asetetaan teksimuuttuja käyttöliittymään, jossa on säätietoja
@@ -94,6 +112,13 @@ class WeatherStationFragment : Fragment() {
                     text += "\n"
                     text += "Humidity: ${humidity}%"
 
+                    val sdf = SimpleDateFormat("HH:mm:ss")
+                    val currentDate = sdf.format(Date())
+
+                    dataText =
+                        "$currentDate - Temperature: ${temperature}℃ - Humidity: ${humidity}%"
+
+
                     // koska MQTT-plugin ajaa koodia ja käsittelee dataa
                     // tausta-ajalla omassa säikeessään eli threadissa
                     // joudumme laittamaan ulkoasuun liittyvän koodin runOnUiThread-blokin-
@@ -101,9 +126,11 @@ class WeatherStationFragment : Fragment() {
                     activity?.runOnUiThread {
                         binding.textViewWeatherTest.text = text
                         binding.speedViewTemperature.speedTo(temperature.toFloat())
+                        binding.customTemperatureViewWeather.changeTemperature(temperature.toInt())
+
+                        binding.latestDataViewTemperature.addData(dataText)
                     }
-                }
-                catch(e : Exception) {
+                } catch (e: Exception) {
                     Log.d("ADVTECH", e.message.toString())
                     Log.d("ADVTECH", "Saattaa olla diagnostiikkadataa.")
                 }
@@ -125,6 +152,6 @@ class WeatherStationFragment : Fragment() {
         super.onDestroyView()
         _binding = null
 
-        client.disconnect()
+        client!!.disconnect()
     }
 }

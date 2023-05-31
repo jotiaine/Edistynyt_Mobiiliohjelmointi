@@ -1,5 +1,6 @@
 package com.jonitiainen.edistynytmobiiliohjelmointi.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -19,6 +20,7 @@ import java.util.Locale
 
 class CalendarFragment : Fragment() {
     private var _binding: FragmentCalendarBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -50,6 +52,7 @@ class CalendarFragment : Fragment() {
                 Toast.makeText(activity, df.format(date), Toast.LENGTH_SHORT).show()
             }
 
+            @SuppressLint("SimpleDateFormat")
             override fun onMonthChanged(date: Date?) {
                 val df = SimpleDateFormat("MM-yyyy")
                 Toast.makeText(activity, df.format(date), Toast.LENGTH_SHORT).show()
@@ -58,6 +61,7 @@ class CalendarFragment : Fragment() {
 
         return root
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
