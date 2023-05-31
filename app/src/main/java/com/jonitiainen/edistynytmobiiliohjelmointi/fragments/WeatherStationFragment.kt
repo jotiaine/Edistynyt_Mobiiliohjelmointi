@@ -16,7 +16,6 @@ import com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.weatherstation.Weat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.UUID
-import java.util.concurrent.CompletableFuture
 
 open class WeatherStationFragment : Fragment() {
     private var _binding: FragmentWeatherStationBinding? = null
@@ -116,7 +115,6 @@ open class WeatherStationFragment : Fragment() {
                         binding.customTemperatureViewWeather.changeTemperature(temperature.toInt())
 
                         binding.latestDataViewTemperature.addData(dataText)
-                        // palautetaan dataText CompletableFuture-oliolle
                     }
                 } catch (e: Exception) {
                     Log.d("ADVTECH", e.message.toString())

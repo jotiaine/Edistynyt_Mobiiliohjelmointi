@@ -27,9 +27,6 @@ class CustomViewTesterFragment : Fragment() {
     // client-olio, jolla voidaan yhdistää MQTT-brokeriin koodin avulla
     private lateinit var client: Mqtt3AsyncClient
 
-    // lista, joka kerää lämpötilalistat
-    private val temperatureList = mutableListOf<Double>()
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -66,7 +63,7 @@ class CustomViewTesterFragment : Fragment() {
                     Log.d("ADVTECH", "Connection failure.")
                 } else {
                     // Setup subscribes or start publishing
-                    subscribeToTopic()
+//                    subscribeToTopic()
                 }
             }
 
@@ -79,7 +76,7 @@ class CustomViewTesterFragment : Fragment() {
 
         // testi-Button, jolla voidaan lisätä satunnainen viesti
         binding.buttonAddTestData.setOnClickListener {
-
+            subscribeToTopic()
         }
 
         return root
@@ -123,13 +120,14 @@ class CustomViewTesterFragment : Fragment() {
                     var dataText: String =
                         "$currentDate - Temperature: ${temperature}℃ - Humidity: ${humidity}%"
 
-
                     // koska MQTT-plugin ajaa koodia ja käsittelee dataa
                     // tausta-ajalla omassa säikeessään eli threadissa
                     // joudumme laittamaan ulkoasuun liittyvän koodin runOnUiThread-blokin-
                     // sisälle. Muutoin tulee virhe että koodit toimivat eri säikeissä
                     activity?.runOnUiThread {
-
+                        binding.latestDataViewTest.addData(dataText)
+                        binding.customTemperatureViewTest.changeTemperature(temperature.toInt())
+                        binding.speedView.speedTo(temperature.toFloat())
                     }
                 } catch (e: Exception) {
                     Log.d("ADVTECH", e.message.toString())

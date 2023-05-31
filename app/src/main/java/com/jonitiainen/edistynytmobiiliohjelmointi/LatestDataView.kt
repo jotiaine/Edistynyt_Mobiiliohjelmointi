@@ -37,7 +37,7 @@ class LatestDataView @JvmOverloads constructor(
     }
 
     // this function can be called where it's needed, init() or an Activity.
-    fun addData(message: String) {
+    fun addData(message: String?) {
         // ennen kuin lisätään uusi TextView, huolehditaan siitä
         // että LinearLayoutissa ei ole ylimääräisiä TextViewejä (max 5kpl)
         while (this.childCount >= maxRows) {
