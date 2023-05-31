@@ -26,7 +26,7 @@
         android:id="@+id/dataFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.DataFragment"
         android:label="fragment_data"
-        tools:layout="@layout/fragment_data" >
+        tools:layout="@layout/fragment_data">
         <action
             android:id="@+id/action_dataFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
@@ -35,7 +35,7 @@
         android:id="@+id/detailFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="id"
             app:argType="integer"
@@ -45,7 +45,7 @@
         android:id="@+id/commentDataFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.CommentDataFragment"
         android:label="fragment_comment_data"
-        tools:layout="@layout/fragment_comment_data" >
+        tools:layout="@layout/fragment_comment_data">
         <action
             android:id="@+id/action_commentDataFragment_to_commentDetailFragment"
             app:destination="@id/commentDetailFragment" />
@@ -54,7 +54,7 @@
         android:id="@+id/commentDetailFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.CommentDetailFragment"
         android:label="fragment_comment_detail"
-        tools:layout="@layout/fragment_comment_detail" >
+        tools:layout="@layout/fragment_comment_detail">
         <argument
             android:name="id"
             app:argType="integer"
@@ -64,7 +64,7 @@
         android:id="@+id/mapsFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.MapsFragment"
         android:label="fragment_maps"
-        tools:layout="@layout/fragment_maps" >
+        tools:layout="@layout/fragment_maps">
         <action
             android:id="@+id/action_mapsFragment_to_cityWeatherFragment"
             app:destination="@id/cityWeatherFragment" />
@@ -73,7 +73,7 @@
         android:id="@+id/cityWeatherFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.CityWeatherFragment"
         android:label="fragment_city_weather"
-        tools:layout="@layout/fragment_city_weather" >
+        tools:layout="@layout/fragment_city_weather">
         <argument
             android:name="lat"
             app:argType="float" />
@@ -95,7 +95,7 @@
         android:id="@+id/feedbackSendFragment"
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.FeedbackSendFragment"
         android:label="fragment_feedback_send"
-        tools:layout="@layout/fragment_feedback_send" >
+        tools:layout="@layout/fragment_feedback_send">
         <action
             android:id="@+id/action_feedbackSendFragment_to_feedbackReadFragment"
             app:destination="@id/feedbackReadFragment" />
@@ -130,4 +130,9 @@
         android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.CalendarFragment"
         android:label="fragment_calendar"
         tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/chartFragment"
+        android:name="com.jonitiainen.edistynytmobiiliohjelmointi.fragments.ChartFragment"
+        android:label="fragment_chart"
+        tools:layout="@layout/fragment_chart" />
 </navigation>

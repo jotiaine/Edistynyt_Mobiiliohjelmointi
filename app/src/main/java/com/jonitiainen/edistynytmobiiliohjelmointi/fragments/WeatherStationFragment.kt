@@ -16,31 +16,18 @@ import com.jonitiainen.edistynytmobiiliohjelmointi.datatypes.weatherstation.Weat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.UUID
+import java.util.concurrent.CompletableFuture
 
-class WeatherStationFragment : Fragment() {
+open class WeatherStationFragment : Fragment() {
     private var _binding: FragmentWeatherStationBinding? = null
     // This property is only valid between onCreateView and
     // onDestroyView.
 
     // client-olio, jolla voidaan yhdistää MQTT-brokeriin koodin avulla
-    private var client: Mqtt3AsyncClient? = null
-        get() {
-            if (field == null) {
-                field = MqttClient.builder()
-                    .useMqttVersion3()
-                    .sslWithDefaultConfig()
-                    .identifier(BuildConfig.MQTT_CLIENT_ID + UUID.randomUUID().toString())
-                    .serverHost(BuildConfig.MQTT_BROKER)
-                    .serverPort(8883)
-                    .buildAsync()
-            }
-            return field
-        }
-
+    private lateinit var client: Mqtt3AsyncClient
 
     private val binding get() = _binding!!
 
-    private var dataText: String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -82,7 +69,7 @@ class WeatherStationFragment : Fragment() {
 
     // apufunktio/metodi jolla yhdistetään sääaseman topiciin
     // JOS yhteys onnistui aiemmin
-    fun subscribeToTopic() {
+    private fun subscribeToTopic() {
         // alustetaan GSON
         val gson = GsonBuilder().setPrettyPrinting().create()
 
@@ -115,7 +102,7 @@ class WeatherStationFragment : Fragment() {
                     val sdf = SimpleDateFormat("HH:mm:ss")
                     val currentDate = sdf.format(Date())
 
-                    dataText =
+                    var dataText: String =
                         "$currentDate - Temperature: ${temperature}℃ - Humidity: ${humidity}%"
 
 
@@ -129,6 +116,7 @@ class WeatherStationFragment : Fragment() {
                         binding.customTemperatureViewWeather.changeTemperature(temperature.toInt())
 
                         binding.latestDataViewTemperature.addData(dataText)
+                        // palautetaan dataText CompletableFuture-oliolle
                     }
                 } catch (e: Exception) {
                     Log.d("ADVTECH", e.message.toString())

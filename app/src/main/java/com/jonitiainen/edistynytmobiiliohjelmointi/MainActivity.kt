@@ -44,8 +44,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.commentDataFragment, R.id.mapsFragment, R.id.openStreetMapFragment,
                 R.id.feedbackReadFragment, R.id.feedbackSendFragment, R.id.basicAuthFragment,
                 R.id.tempAccessFragment, R.id.weatherStationFragment, R.id.remoteMessageFragment,
-                R.id.customViewTesterFragment, R.id.calendarFragment,
-                ), drawerLayout
+                R.id.customViewTesterFragment, R.id.calendarFragment, R.id.chartFragment,
+            ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

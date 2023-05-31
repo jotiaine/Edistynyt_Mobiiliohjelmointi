@@ -52,5 +52,8 @@
         <item
             android:id="@+id/calendarFragment"
             android:title="Calendar Test"/>
+        <item
+            android:id="@+id/chartFragment"
+            android:title="Chart test"/>
     </group>
 </menu>
